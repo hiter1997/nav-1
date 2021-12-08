@@ -23,7 +23,7 @@ const render =()=>{
             <div class="logo">${node.logo}</div>
             <div class="link">${simplifyUrl(node.url)}</div>
             <div class="close">
-              <svg class="icon">
+              <svg class="icon-x">
                 <use xlink:href="#icon-x"></use>
               </svg>
             </div>
@@ -59,3 +59,12 @@ $('.addButton').on('click', () => {
     const string = JSON.stringify(hashMap)
     localStorage.setItem('x', string)
   }
+
+  $(document).on('keypress', (e) => {
+    const {key} = e
+    for (let i = 0; i < hashMap.length; i++) {
+      if (hashMap[i].logo.toLowerCase() === key) {
+        window.open(hashMap[i].url)
+      }
+    }
+  })
